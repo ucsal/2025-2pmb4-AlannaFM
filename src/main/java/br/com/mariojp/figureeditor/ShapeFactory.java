@@ -4,9 +4,7 @@ import java.awt.Point;
 import java.awt.Shape;
 
 public interface ShapeFactory {
-	Shape createShape(Point p); 
-
+	Shape createShape(int x, int y, int size);
 }
 
 
- //recebe a posição onde a figura sera desenhada e retorna o objeto geométrico correspondente (shape)
