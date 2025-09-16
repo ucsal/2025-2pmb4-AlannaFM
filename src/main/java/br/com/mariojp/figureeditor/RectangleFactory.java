@@ -1,6 +1,5 @@
 package br.com.mariojp.figureeditor;
 
-import java.awt.Point;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 
@@ -8,9 +7,8 @@ public class RectangleFactory implements ShapeFactory {
 
 	@Override
 	public Shape createShape(int x, int y, int size) {
-		int width = size + 20; 
-		int height = size - 10;
-		return new Rectangle2D.Double(x, y, Math.max(width, 15), Math.max(height, 15));
+		
+		return new Rectangle2D.Double(x - size / 2.0, y - size / 2.0, size, size);
 	}
 
 }

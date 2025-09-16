@@ -10,8 +10,9 @@ public class CircleFactory implements ShapeFactory {
 	
 	@Override
 	public Shape createShape(int x, int y, int size) {
-		int diameter = size + 30;
-		return new Ellipse2D.Double(x, y, Math.max(diameter, 25), Math.max(diameter, 25));
+		int diameter = size;
+      
+        return new Ellipse2D.Double(x - diameter / 2.0, y - diameter / 2.0, diameter, diameter);
 	}
 
 }

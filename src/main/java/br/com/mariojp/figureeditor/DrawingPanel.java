@@ -15,25 +15,37 @@ class DrawingPanel extends JPanel {
     private final List<Shape> shapes = new ArrayList<>();
     private Point startDrag = null;
 
-    DrawingPanel() {
-        
+    private ShapeFactory factory;
+
+
+    DrawingPanel(ShapeFactory factory) {
+         this.factory = factory;
+
         setBackground(Color.WHITE);
         setOpaque(true);
         setDoubleBuffered(true);
 
         var mouse = new MouseAdapter() {
             @Override public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1 && startDrag == null) {
+                /*if (e.getClickCount() == 1 && startDrag == null) {
                     int size = Math.max(Math.min(DEFAULT_SIZE, DEFAULT_SIZE), 10);
                     Shape s =  new RectangleFactory().createShape(e.getPoint().x, e.getPoint().y, size);
                     shapes.add(s);
                     repaint();
-                }
+                }*/
+
+                Shape s = factory.createShape(e.getPoint().x, e.getPoint().y, DEFAULT_SIZE);
+                shapes.add(s);
+                repaint();
             }
         };
         addMouseListener(mouse);        
-        addMouseMotionListener(mouse);
+        //addMouseMotionListener(mouse);
 
+    }
+
+    void setFactory(ShapeFactory factory) {
+        this.factory = factory;
     }
 
     void clear() {
